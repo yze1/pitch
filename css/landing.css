@@ -1,0 +1,154 @@
+/* Gong */
+.gong-scroll {
+    position: relative;
+    height: 300vh;
+    padding: 0;
+    background: var(--pure-black);
+}
+
+.gong-frame {
+    position: sticky;
+    top: 0;
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--pure-black);
+}
+
+.gong-frame > img {
+    width: calc(100% + var(--margin));
+    max-width: none;
+    height: 100%;
+    margin-left: calc(var(--margin) * -0.5);
+    object-fit: contain;
+    mix-blend-mode: lighten;
+}
+
+.gong-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--gong-radius, 0px) * 2);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    will-change: width;
+}
+
+.gong-title,
+.gong-tagline {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    display: flex;
+    width: calc(100% - var(--margin) - var(--margin));
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing);
+}
+
+.gong-title {
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, calc(-50% + var(--gong-content-shift, 0px)));
+}
+
+.gong-tagline {
+    bottom: 0;
+    transform: translate(-50%, calc(var(--tagline-offset, 35vh) + var(--gong-content-shift, 0px)));
+}
+
+.gong-title :is(h2, h5),
+.gong-tagline :is(h3, h5) {
+    --ink: var(--black);
+    --text-noise: none;
+    margin-block: -0.15em;
+    padding-block: 0.15em;
+    color: transparent !important;
+    text-align: center;
+    background-color: transparent !important;
+    background-image: var(--text-noise), radial-gradient(
+        circle at var(--gong-local-x, 50%) var(--gong-local-y, 50%),
+        var(--ink) 0 var(--gong-radius, 0px),
+        var(--gong-colour) var(--gong-radius, 0px)
+    ) !important;
+    background-attachment: local;
+    background-size: auto !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+.gong-title :is(h2, h5) {--gong-colour: var(--red); line-height: 1;}
+.gong-title h2 {
+    width: max-content;
+    padding-inline: 0.05em;
+    margin-inline: -0.05em;
+    white-space: break-spaces;
+}
+.gong-title h5 {padding-inline: 0.04em; margin-inline: -0.04em;}
+.gong-title strong,
+body.gong-active #header strong {
+    color: inherit !important;
+    background: none !important;
+}
+
+.gong-tagline h3 {
+    --gong-colour: var(--red);
+    width: max-content;
+    padding: 0.18em 0.12em;
+    margin-inline: -0.12em;
+}
+.gong-tagline h5 {--gong-colour: var(--white);}
+
+.gong-tagline .spacer.quarter-divider {
+    position: relative;
+    isolation: isolate;
+    grid-column: 1 / -1;
+    width: 25% !important;
+    margin: var(--tagline-lift, 0px) auto calc(var(--spacing) * 2);
+    background-color: var(--red);
+    background-image: var(--red-noise);
+}
+
+.gong-tagline .spacer.quarter-divider::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--black);
+    background-image: var(--black-noise);
+    -webkit-mask-image: radial-gradient(circle at var(--gong-local-x, 50%) var(--gong-local-y, 50%), #000 0 var(--gong-radius, 0px), transparent var(--gong-radius, 0px));
+    mask-image: radial-gradient(circle at var(--gong-local-x, 50%) var(--gong-local-y, 50%), #000 0 var(--gong-radius, 0px), transparent var(--gong-radius, 0px));
+}
+
+body.gong-active #header :is(a, button) {
+    --ink: var(--black) !important;
+    --text-noise: none !important;
+    --gong-colour: var(--white);
+    color: transparent !important;
+    background-color: transparent !important;
+    background-image: var(--text-noise), radial-gradient(
+        circle at var(--gong-center-x, 50vw) var(--gong-center-y, 50vh),
+        var(--ink) 0 var(--gong-radius, 0px),
+        var(--gong-colour) var(--gong-radius, 0px)
+    ) !important;
+    background-attachment: local, fixed;
+    background-size: auto !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
+body.gong-active #header .logo a {--gong-colour: var(--red);}
+body.gong-active #header .caption a:hover {--gong-colour: var(--red);}
+body.gong-active #header .logo a:hover {--gong-colour: var(--white);}
+
+/* Landing media */
+img.gif {display: block; width: 100%; aspect-ratio: 1; object-fit: cover;}
+
+@media (max-width: 768px) {
+    .gong-scroll {height: auto; aspect-ratio: 1;}
+    .gong-frame {position: relative; top: auto; height: auto; aspect-ratio: 1;}
+    .gong-title, .gong-tagline {gap: var(--inner-gap);}
+    .gong-tagline h5 {font-size: 10px; line-height: 1.2;}
+    .gong-tagline .spacer.quarter-divider {margin-bottom: var(--spacing);}
+}

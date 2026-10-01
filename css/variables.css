@@ -1,0 +1,21 @@
+
+:root {
+    /* Previous colours:
+    --black: #1a1a1a;
+    --white: #FAF9F6;
+    --red: #FF2E24;
+    */
+    /* --black: #1D1D1D; */
+    --black: #000000;
+    --pure-black: #000000;
+    --white: #FAF9F6;
+    --red: #FF2E24;
+    --noise-debug: #00FFFF;
+
+    --margin: 75px;
+
+    --columns: 12;
+    --gutter: 25px;
+    --spacing: 30px;
+    --inner-gap: calc(var(--spacing) / 2);
+}

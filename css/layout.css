@@ -1,0 +1,148 @@
+/* section {outline: 1px solid #666;}
+section > div {outline: 1px solid red; background-color: rgb(0, 255, 0, 0.15);}
+section > div > * {outline: 1px dashed rgb(0, 0, 255);}
+section h1, section h2, section h3, section h4, section p {outline: 1px solid cyan;}
+section a {outline: 1px dashed orange;} */
+/* body section {
+    background-image: linear-gradient( to right, rgba(0, 80, 255, 0.12) 0, rgba(0, 80, 255, 0.12) calc(100% - var(--gutter)), transparent calc(100% - var(--gutter)), transparent 100%);
+    background-size:calc((100% + var(--gutter)) / var(--columns)) 100%; background-repeat: repeat-x;
+} */
+
+/* Reset */
+* {margin: 0; padding: 0;}
+*, *::before, *::after {box-sizing: border-box;}
+
+/* Page structure */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-right: var(--margin);
+    padding-left: var(--margin);
+    background: var(--white);
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    gap: var(--spacing) var(--gutter);
+    margin-right: calc(var(--margin) * -1);
+    margin-left: calc(var(--margin) * -1);
+    padding: calc(var(--spacing) * 2) var(--margin);
+}
+
+section > :is(.s1, .s2, .s3, .s4, .s5, .s6, .s7, .s8, .s9, .s10, .s11, .s12) {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--inner-gap);
+}
+
+#header {
+    /* padding-top: calc(var(--spacing) * 0.5); */
+    padding-top: calc(var(--spacing) * 0);
+
+    /* margin-top: calc(var(--spacing) * -0.5);
+    margin-bottom: calc(var(--spacing) * -0.5); */
+
+
+    position: relative;
+    z-index: 10;}
+#footer {margin-top: auto;}
+#footer > .black {padding-block: calc(var(--spacing) * 2);}
+
+/* Grid */
+.s1 {grid-column: span 1;}
+.s2 {grid-column: span 2;}
+.s3 {grid-column: span 3;}
+.s4 {grid-column: span 4;}
+.s5 {grid-column: span 5;}
+.s6 {grid-column: span 6;}
+.s7 {grid-column: span 7;}
+.s8 {grid-column: span 8;}
+.s9 {grid-column: span 9;}
+.s10 {grid-column: span 10;}
+.s11 {grid-column: span 11;}
+.s12 {grid-column: span 12;}
+.s3.end {grid-column: span 3 / -1;}
+.s4.end {grid-column: span 4 / -1;}
+.s6.end {grid-column: span 6 / -1;}
+.s10.center {grid-column: 2 / span 10;}
+
+section > .right {align-items: flex-end;}
+section > .center {align-items: center;}
+section > .row, .row div {flex-direction: row;}
+.stretch {justify-content: space-between;}
+
+/* Spacing and sizing */
+.tall {padding-block: calc(var(--spacing) * 5) calc(var(--spacing) * 8);}
+.compact {margin-block: 0; padding-block: 0;}
+.bleed {
+    margin-right: calc(var(--margin) * -1);
+    margin-left: calc(var(--margin) * -1);
+    padding-right: var(--margin);
+    padding-left: var(--margin);
+}
+.bleed.full {padding-inline: 0;}
+/* .expansive {padding-inline: calc(var(--margin) * 0.5);} */
+.spread {display: inline-block; white-space: pre; transform-origin: left top;}
+
+section.underlap {
+    position: relative;
+    z-index: 1;
+    margin-top: var(--underlap-offset, 0);
+}
+
+/* Surfaces and media */
+.black {background: var(--black);}
+.red {background: var(--red);}
+img, video {display: block; width: 100%; height: auto;}
+iframe {display: block; width: 100%; border: 0;}
+
+/* Work listing */
+.project-card {grid-column: span 4; min-width: 0;}
+.metadata {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--gutter);
+    padding-top: calc(var(--spacing) / 2);
+}
+
+/* Responsive grid */
+@media (max-width: 1024px) and (min-width: 769px) {
+    :root {--columns: 6; --gutter: 20px;}
+    :is(.s1, .s2, .s3, .s4, .s5, .s6, .s7, .s8, .s9, .s10, .s11, .s12) {grid-column: span 6;}
+    :is(.s6.end, .s10.center) {grid-column: span 6;}
+    :is(.s3.end, .s4.end) {grid-column: span 2 / -1;}
+    .s4.stubborn {grid-column: span 2;}
+    .s6.stubborn, .t3 {grid-column: span 3;}
+    .s8.stubborn {grid-column: span 4;}
+    .t2 {grid-column: span 2;}
+    .project-card {grid-column: span 3;}
+}
+
+@media (max-width: 768px) {
+    :root {--margin: 25px; --columns: 4; --gutter: 20px;}
+    :is(.s1, .s2, .s3, .s4, .s5, .s6, .s7, .s8, .s9, .s10, .s11, .s12) {grid-column: span 4;}
+    :is(.s6.end, .s10.center) {grid-column: span 4;}
+    :is(.s3.end, .s4.end, .s6.stubborn, .m2) {grid-column: span 2;}
+    .s4.stubborn {grid-column: span 1;}
+    .s8.stubborn {grid-column: span 3;}
+    .project-card {grid-column: span 4;}
+}
+
+/* Noise debug: press N to toggle */
+html.noise-debug :where(
+    body,
+    section.red, div.red,
+    section.black, div.black,
+    section.white, div.white,
+    .spacer, .spacer-mini,
+    .horizontal-gallery__item,
+    h1, h2, h3, h4, h5, p, a, button, span, strong,
+    .twenty-years
+) {
+    outline: 2px solid var(--noise-debug) !important;
+    outline-offset: -2px;
+}

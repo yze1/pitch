@@ -1,0 +1,258 @@
+/* Colour context */
+:root {
+    --ink: var(--black);
+    --text-noise: none;
+}
+
+:is(section, div).black {
+    --ink: var(--white);
+    --text-noise: var(--white-noise);
+}
+
+:is(section, div).red {
+    --ink: var(--black);
+    --text-noise: none;
+}
+
+:is(h1, h2, h3, h4, h5, p, a, button, span, strong).red,
+.red-text {
+    --ink: var(--red);
+    --text-noise: var(--red-noise);
+}
+
+:is(h1, h2, h3, h4, h5, p, a, button, span, strong).white {
+    --ink: var(--white);
+    --text-noise: var(--white-noise);
+}
+
+:is(h1, h2, h3, h4, h5, p, a, button, span, strong).black {
+    --ink: var(--black);
+    --text-noise: none;
+}
+
+html {background: var(--black);}
+body {background: var(--white); cursor: none; overscroll-behavior-y: none;}
+
+/* Cursor */
+#cursor {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+}
+#cursor h4 {margin: 0; line-height: 1; white-space: nowrap;}
+#cursor img {display: block; width: 40px; height: 40px;}
+#cursor strong, #cursor.video-hover h4 {--ink: var(--red); --text-noise: var(--red-noise);}
+#cursor.over-red :is(h4, strong) {--ink: var(--black); --text-noise: none;}
+#cursor.over-red img {filter: brightness(0) invert(11%);}
+
+/* Fonts */
+@font-face {font-family: "Inter"; src: url("../assets/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype"); font-weight: 100 900; font-style: normal;}
+@font-face {font-family: "Cooper"; src: url("../assets/fonts/Cooper-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal;}
+@font-face {font-family: "CooperBold"; src: url("../assets/fonts/Cooper-ExtraBold.ttf") format("truetype"); font-weight: 800; font-style: normal;}
+@font-face {font-family: "JetBrains"; src: url("../assets/fonts/jetbrains-mono-extralight.ttf") format("truetype"); font-weight: 100 900; font-style: normal;}
+@font-face {font-family: "JetBrainsThin"; src: url("../assets/fonts/jetbrains-mono-thin.ttf") format("truetype"); font-weight: 100; font-style: normal;}
+@font-face {font-family: "GeistMono"; src: url("../assets/fonts/GeistMono-VariableFont_wght.ttf") format("truetype"); font-weight: 100 900; font-style: normal;}
+
+:is(h1, h2, h3.logo, h4.logo) {font-family: "Inter", sans-serif; font-weight: 656;}
+:is(h3, h4) {font-family: "Inter", sans-serif; font-weight: 400;}
+:is(p, button, .inter) {font-family: "Inter", sans-serif; font-weight: 400;}
+p.b {font-weight: 600;}
+strong {font-family: "Cooper", serif; font-weight: 500;}
+.caption {font-family: "JetBrains", monospace; font-weight: 400;}
+.mono {font-family: "JetBrains", monospace; text-transform: none;}
+.footer-copy, .footer-copy :is(p, a) {font-family: "JetBrainsThin", monospace; font-weight: 100;}
+h4.scalable {font-weight: 800;}
+h4.scalable > strong {font-family: "CooperBold", serif;}
+.logo a {font-family: inherit; font-weight: inherit;}
+
+:is(h1, h2, h3, h4, button, .upper, .caps, .mono.caps) {text-transform: uppercase;}
+:is(h1, h2, h3, h4, h5, p, a, button, span, strong) {
+    color: var(--ink);
+    font-style: normal;
+    font-variant-ligatures: common-ligatures contextual;
+    font-feature-settings: "calt" on, "liga" on, "dlig" on;
+    hyphens: none;
+    white-space: pre-wrap;
+}
+
+/* Type scale */
+h1 {font-size: 200px; line-height: 0.8; letter-spacing: -0.05em;}
+h2 {font-size: 128px; line-height: 0.8; letter-spacing: -0.05em;}
+h3 {font-size: 54px; line-height: 0.9; letter-spacing: -0.05em;}
+h4 {font-size: 28px; line-height: 1;}
+h5, p, button {font-size: 19px;}
+.caption {font-size: 14px; letter-spacing: 0.05em;}
+:is(h1, h2, h3):has(strong) {line-height: 0.15;}
+h1:has(strong) {line-height: 0;}
+:is(h1, h1.strong) {margin-bottom: calc(var(--spacing) * 2);}
+:is(h2, h2.strong, h3, h3.strong, h4, h4.strong) {margin-bottom: var(--spacing);}
+
+p.caption.spaced {
+    /* color: pink; */
+    line-height: 24px;
+}
+
+/* Links and controls */
+a, button {
+    font-family: "JetBrains", monospace;
+    --ink: var(--red);
+    --text-noise: var(--red-noise);
+}
+a {text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px;}
+button {
+    --ink: var(--black);
+    --text-noise: none;
+    padding: calc(var(--spacing) / 8) calc(var(--spacing) / 2);
+    border: 0;
+    outline: 0;
+    background: var(--red);
+}
+button > :is(p, a > p) {--ink: var(--black); --text-noise: none;}
+.red button {--ink: var(--red); background: var(--black);}
+.red button > :is(p, a > p) {--ink: var(--red);}
+button.right {display: block; margin-right: 0; margin-left: auto;}
+
+/* Alignment */
+.right {display: flex; justify-content: flex-end; text-align: right;}
+.center :is(h1, h2, h3, h4, h5, p) {text-align: center;}
+.center button {display: block; margin-inline: auto;}
+.justify {text-align: justify; text-align-last: justify;}
+
+/* Header */
+#header {
+    position: fixed !important;
+    z-index: 10;
+    top: 0;
+    right: var(--margin);
+    left: var(--margin);
+}
+.header {padding-top: var(--spacing);}
+.header > div {align-self: start; justify-content: flex-start;}
+.header > div.desktop-link {align-items: flex-end; justify-content: flex-end;}
+.header > div.mobile-logo, .header > div.mobile-nav {display: none;}
+.header-row > .caption {display: contents;}
+.desktop-link p {display: flex; width: 100%; justify-content: flex-end; gap: var(--gutter);}
+
+#header a {font-family: "GeistMono", monospace; text-decoration: none;}
+#header .caption {text-transform: uppercase;}
+#header:has(+ .underlap) .caption a {--ink: var(--white); --text-noise: var(--white-noise);}
+#header:has(+ .underlap) .logo a {--ink: var(--red); --text-noise: var(--red-noise);}
+#header:has(+ .underlap) .caption a:hover {--ink: var(--red); --text-noise: var(--red-noise);}
+#header:has(+ .underlap) .logo a:hover {--ink: var(--white); --text-noise: var(--white-noise);}
+#header :is(a, button, strong) {
+    background-color: transparent !important;
+    background-image: linear-gradient(
+        to bottom,
+        var(--ink) 0 var(--header-red-start, 100%),
+        var(--black) var(--header-red-start, 100%) var(--header-red-end, 100%),
+        var(--ink) var(--header-red-end, 100%) 100%
+    ) !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.holding-header .header-row .caption a:not([href$="/contact/"]):not([href="#contact"]),
+.holding-header .mobile-menu a:not([href$="/contact/"]):not([href="#contact"]) {display: none;}
+#header .holding-header :is(a, button) {--ink: var(--red) !important; --text-noise: var(--red-noise) !important;}
+#header .holding-header .logo :is(a, strong),
+#cursor:not(.over-red) strong {--text-noise: none !important;}
+
+/* Footer */
+#footer a {--ink: var(--white); --text-noise: var(--white-noise); text-decoration: none;}
+#footer a:hover {--ink: var(--red); --text-noise: var(--red-noise);}
+#footer .footer-socials a:hover .icon {background: var(--red);}
+#footer .footer-logo h2 {margin-bottom: 0; line-height: 0.8;}
+.spread-links {display: flex; width: 100%; justify-content: space-between;}
+
+@media (min-width: 1025px) {
+    .header > div.header-row {flex-direction: row; align-items: flex-start; justify-content: space-between;}
+    #footer .footer-socials {align-self: start;}
+    #footer .footer-address {grid-column: span 8; align-self: start; justify-content: flex-start;}
+    #footer .footer-address p {margin: 0; text-align: right;}
+    #footer .footer-logo {grid-column: span 9;}
+    #footer .footer-nav {grid-column: span 3; align-self: end; align-items: flex-end; justify-content: flex-end;}
+    #footer .footer-nav .spread-links {flex-direction: column; align-items: flex-end;}
+}
+
+/* Icons and dividers */
+.icon {
+    width: 24px;
+    aspect-ratio: 1;
+    background: var(--ink);
+    -webkit-mask: var(--icon) center / contain no-repeat;
+    mask: var(--icon) center / contain no-repeat;
+}
+.instagram {--icon: url("../assets/icons/instagram.svg");}
+.linkedin {--icon: url("../assets/icons/linkedin.svg");}
+.tiktok {--icon: url("../assets/icons/tiktok.svg");}
+.vimeo {--icon: url("../assets/icons/vimeo.svg");}
+.email {--icon: url("../assets/icons/email.svg");}
+
+.space {height: 200px;}
+.spacer {height: 40px;}
+.spacer-mini {height: 15px;}
+.spacer, .spacer-mini {
+    max-width: 85%;
+    margin-top: calc(var(--spacing) * -0.5);
+    margin-bottom: var(--spacing);
+    margin-left: 15%;
+    background: var(--red);
+}
+.red :is(.spacer, .spacer-mini) {background: var(--black);}
+.center > :is(.spacer, .spacer-mini) {margin-inline: auto;}
+img.logo, img.gif {background: rgb(from var(--white) r g b / 0.1);}
+
+::selection {color: var(--black); background: var(--red);}
+.red ::selection {color: var(--red); background: var(--black);}
+
+.red a {--ink: var(--black); --text-noise: none;}
+
+/* Responsive header and type */
+@media (max-width: 1024px) {
+    h1 {font-size: 128px;}
+    h2 {font-size: 80px;}
+    h3 {font-size: 28px;}
+    h4 {font-size: 19px;}
+    h4:not(.mono) {font-weight: 600;}
+
+    .header > div.desktop-link {display: none;}
+    .header > div.mobile-logo {display: flex;}
+    .header > div.mobile-nav {
+        display: block;
+        position: relative;
+        grid-column: -3 / -1;
+        width: 100%;
+        align-self: start;
+        justify-self: end;
+    }
+    .menu-toggle {display: block; margin-left: auto; padding: 0; background: none; font-size: 28px; line-height: 1; white-space: nowrap;}
+    .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: var(--spacing);
+        padding-top: var(--spacing);
+    }
+    .mobile-menu.open {display: flex;}
+}
+
+@media (max-width: 768px) {
+    body {cursor: auto;}
+    #cursor {display: none;}
+    .header {padding-top: calc(var(--inner-gap) / 2);}
+    #footer .footer-socials,
+    #footer .footer-address,
+    #footer .footer-logo {grid-column: 1 / -1;}
+    #footer .footer-address {align-items: flex-start;}
+    #footer .footer-address p {text-align: left;}
+    #footer .footer-logo h2 {font-size: min(20vw, 80px);}
+    #footer .spread-links {flex-wrap: wrap; gap: var(--spacing) var(--gutter);}
+}

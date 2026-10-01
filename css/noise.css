@@ -1,0 +1,92 @@
+:root {
+    /* Previous noise settings:
+    --red-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='203' height='203'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix in='n' type='saturate' values='0' result='gray'/%3E%3CfeComponentTransfer in='gray'%3E%3CfeFuncR type='linear' slope='3' intercept='-1'/%3E%3CfeFuncG type='linear' slope='3' intercept='-1'/%3E%3CfeFuncB type='linear' slope='3' intercept='-1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.35'/%3E%3C/svg%3E");
+    --white-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='161' height='161'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='2 0 0 0 0 0 2 0 0 0 0 0 2 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.08'/%3E%3C/svg%3E");
+    --black-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='86' height='86'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='.168 0 0 0 -.044 0 .168 0 0 -.044 0 0 .168 0 -.044 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.9'/%3E%3C/svg%3E");
+    */
+
+    /* Previous red export: size 203, opacity 6%, contrast 125%, brightness 67%. */
+    /* --red-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='203' height='203'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='.8375 0 0 0 -.08375 0 .8375 0 0 -.08375 0 0 .8375 0 -.08375 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.06'/%3E%3C/svg%3E"); */
+
+    /* Reference red grain at 100% contrast. */
+    /* --red-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix in='n' type='saturate' values='0' result='gray'/%3E%3CfeComponentTransfer in='gray'%3E%3CfeFuncR type='linear' slope='.89'/%3E%3CfeFuncG type='linear' slope='.89'/%3E%3CfeFuncB type='linear' slope='.89'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.07'/%3E%3C/svg%3E"); */
+
+    /* Previous enhanced red: size 200, opacity 7%, contrast 200%, brightness 89%, normal blend. */
+    /* --red-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch' result='n'/%3E%3CfeColorMatrix in='n' type='saturate' values='0' result='gray'/%3E%3CfeComponentTransfer in='gray'%3E%3CfeFuncR type='linear' slope='1.78' intercept='-.445'/%3E%3CfeFuncG type='linear' slope='1.78' intercept='-.445'/%3E%3CfeFuncB type='linear' slope='1.78' intercept='-.445'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.07'/%3E%3C/svg%3E"); */
+
+    --red-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='275' height='275'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1.412 0 0 0 -.506 0 1.412 0 0 -.506 0 0 1.412 0 -.506 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.29'/%3E%3C/svg%3E");
+    --red-blend: multiply;
+    --white-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='161' height='161'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='2 0 0 0 0 0 2 0 0 0 0 0 2 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.04'/%3E%3C/svg%3E");
+    /* Previous black: size 86, opacity 79%, contrast 210%, brightness 8%, normal blend. */
+    /* --black-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='86' height='86'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='.168 0 0 0 -.044 0 .168 0 0 -.044 0 0 .168 0 -.044 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.79'/%3E%3C/svg%3E"); */
+    --black-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='275' height='275'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='.231 0 0 0 -.0805 0 .231 0 0 -.0805 0 0 .231 0 -.0805 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.5'/%3E%3C/svg%3E");
+    --black-blend: screen;
+}
+
+/* Coloured elements */
+html.noise-on :where(.red, .red-text, .spacer, .spacer-mini) {
+    background-color: var(--red);
+    background-image: var(--red-noise);
+    background-blend-mode: var(--red-blend, normal);
+}
+
+html.noise-on :where(.white, body, .horizontal-gallery__item) {
+    background-color: var(--white);
+    background-image: var(--white-noise);
+    background-blend-mode: var(--white-blend, normal);
+}
+
+html.noise-on :where(.black, body.noise-black-surface) {
+    background-color: var(--black);
+    background-image: var(--black-noise);
+    background-blend-mode: var(--black-blend, normal);
+}
+
+html.noise-on .red :is(.spacer, .spacer-mini) {
+    background-color: var(--black);
+    background-image: var(--black-noise);
+    background-blend-mode: normal;
+}
+
+/* Coloured text */
+html.noise-on :where(h1, h2, h3, h4, h5, p, a, span, strong) {
+    color: transparent;
+    overflow: visible;
+    background-color: var(--ink);
+    background-image: var(--text-noise);
+    background-blend-mode: normal;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+html.noise-on :where(h1, h2, h3, h4, h5, p, a, span, strong) {
+    margin-inline: -0.06em;
+    padding-inline: 0.06em;
+}
+
+.noise-controls {
+    position: fixed;
+    z-index: 10000;
+    inset: 0;
+    display: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: auto;
+    background: var(--black);
+    font: 14px "GeistMono", monospace;
+}
+
+html.noise-debug .noise-controls {display: grid;}
+.noise-controls, .noise-controls * {color: var(--black); background-image: none; -webkit-background-clip: border-box; background-clip: border-box;}
+.noise-controls__preset {display: flex; min-height: 100vh; flex-direction: column; gap: var(--spacing); padding: var(--margin); background-color: var(--preset-colour); background-image: var(--preset-noise); background-blend-mode: var(--preset-blend);}
+.noise-controls__preset[data-name="black"] {color: var(--white);}
+.noise-controls__preset[data-name="black"] * {color: var(--white);}
+.noise-controls__preset h2 {color: inherit; background: none;}
+.noise-controls__row {display: grid; grid-template-columns: 90px 1fr 55px; align-items: center; gap: var(--inner-gap);}
+.noise-controls input, .noise-controls select, .noise-controls button {width: 100%; accent-color: currentColor; font: inherit;}
+.noise-controls select, .noise-controls button {border: 1px solid currentColor; padding: 6px; background: transparent;}
+.noise-controls__export {position: fixed; right: var(--margin); bottom: var(--spacing); z-index: 1; width: auto !important; background: var(--red) !important; color: var(--black) !important;}
+
+@media (max-width: 768px) {
+    .noise-controls {grid-template-columns: 1fr;}
+    .noise-controls__preset {min-height: auto;}
+}

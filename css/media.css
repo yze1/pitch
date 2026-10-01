@@ -1,0 +1,240 @@
+/* Mux player */
+mux-player {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    --controls: none;
+}
+
+.holding-video {
+    --holding-ticker-height: calc(var(--spacing) * 2 + 25px);
+    position: relative;
+}
+.holding-video mux-player {filter: brightness(0.7);}
+
+/* Anniversary overlay */
+.twenty-years-overlay {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: var(--holding-ticker-height);
+    pointer-events: none;
+}
+
+.twenty-years {
+    position: relative;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 0;
+    flex: 1 1 0;
+    aspect-ratio: 1;
+    animation: rotate-twenty-years 30s linear infinite;
+    /* filter: drop-shadow(0 4px 12px rgb(from var(--black) r g b / 0.8)); */
+    filter: drop-shadow(0 4px 12px rgb(from var(--black) r g b / 0.5));
+}
+
+body:not(.holding-page) .twenty-years {
+    max-width: 70.71%;
+    max-height: 70.71%;
+}
+
+.twenty-years::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--red);
+    background-image: var(--red-noise);
+    background-blend-mode: var(--red-blend, normal);
+    -webkit-mask: url("../assets/media/20y.png") center / contain no-repeat;
+    mask: url("../assets/media/20y.png") center / contain no-repeat;
+}
+
+@keyframes rotate-twenty-years {
+    from {transform: translateY(var(--twenty-years-offset, 0)) rotate(0deg) scale(var(--twenty-years-scale, 1));}
+    to {transform: translateY(var(--twenty-years-offset, 0)) rotate(360deg) scale(var(--twenty-years-scale, 1));}
+}
+
+/* Holding page */
+.holding-page .twenty-years-overlay {
+    z-index: 3;
+    position: relative;
+    grid-area: 1 / 1;
+    inset: auto;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    
+    gap: var(--inner-gap);
+
+    justify-self: center;
+    padding: calc(var(--holding-header-height, 0px) + var(--inner-gap)) 0 0;
+    text-align: center;
+}
+
+.holding-page .holding-video {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 0;
+    align-items: stretch;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.holding-page .holding-video mux-player {
+    grid-area: 1 / 1 / 3 / 2;
+    height: 100%;
+    min-width: 0;
+    margin-inline: auto;
+    --media-object-position: center;
+}
+.holding-page .twenty-years {
+    --twenty-years-scale: 0.7071;
+    max-width: 100%;
+}
+
+.holding-page #header {padding-top: 0;}
+.holding-page #header .header {
+    position: relative;
+    align-items: center;
+    padding-block: calc(var(--spacing) / 2);
+}
+.holding-page #header .holding-header > div {align-self: center;}
+.holding-page #header .header h4 {margin-bottom: 0;}
+.holding-page #header .holding-header .header-row {align-items: center;}
+.holding-page .holding-video::before {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    top: var(--holding-header-height, 0px);
+    left: 0;
+    width: 100vw;
+    border-bottom: 2px solid var(--red);
+}
+
+.holding-message {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--inner-gap);
+    padding-bottom: calc(var(--inner-gap) * 3);
+    text-align: center;
+}
+.holding-message h4 {
+    --ink: var(--red);
+    --text-noise: var(--red-noise);
+    margin: 0;
+    margin-top: calc(var(--spacing) * -1.5);
+    text-align: center;
+}
+.holding-message .spacer.quarter-divider {width: 25%; margin: 0 auto;}
+.holding-ticker h5 {color: var(--red) !important; background: transparent !important;}
+
+.holding-ticker {
+    position: relative;
+    z-index: 2;
+    grid-area: 2 / 1;
+    overflow: hidden;
+    padding-block: var(--spacing);
+    background: transparent;
+    box-shadow: inset 0 2px var(--red);
+}
+
+.holding-ticker__track {
+    display: flex;
+    width: max-content;
+    animation: holding-ticker 45s linear infinite;
+}
+
+.holding-ticker h5 {line-height: 25px; white-space: nowrap;}
+.holding-ticker .caption {--ink: var(--red); --text-noise: var(--red-noise);}
+
+@keyframes holding-ticker {to {transform: translateX(-50%);}}
+
+@media (min-width: 769px) {
+    .holding-page .holding-video {height: 100svh; aspect-ratio: auto;}
+    .holding-page .holding-video mux-player {--media-object-fit: cover;}
+}
+
+@media (min-width: 1025px) {
+    .holding-page .twenty-years {
+        --twenty-years-scale: 0.63639;
+        --twenty-years-offset: -3.5355%;
+    }
+    .holding-page .holding-message h4 {transform: translateY(calc(var(--inner-gap) * -1));}
+}
+
+@media (max-width: 1024px) {
+    .holding-page #header .mobile-menu.open {
+        top: 50%;
+        right: calc(28px + var(--gutter));
+        padding-top: 0;
+        transform: translateY(-50%);
+    }
+}
+
+/* Portfolio carousel */
+.portfolio-carousel {
+    position: relative;
+    width: 100%;
+}
+
+.portfolio-carousel__viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.portfolio-carousel__stage {position: absolute; inset: 0;}
+
+.portfolio-carousel__card {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: min(32vw, 480px);
+    transform: translate3d(var(--x, 0), -50%, 0);
+}
+
+.portfolio-carousel__card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.portfolio-carousel__caption {
+    position: absolute;
+    top: calc(100% + var(--inner-gap));
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s linear;
+}
+
+.portfolio-carousel__caption p {margin: 0; font-size: 14px;}
+
+@media (max-width: 768px) {
+    mux-player {aspect-ratio: 1; --media-object-fit: cover;}
+    .twenty-years {width: 142.8%;}
+    .holding-video {--holding-ticker-height: 37.5px;}
+    .holding-page .holding-video {aspect-ratio: 1;}
+    .holding-page .twenty-years {--twenty-years-scale: 0.763668;}
+    .holding-page .holding-message h4 {margin-top: 0;}
+    .holding-page .holding-message .spacer {height: 26.667px;}
+    .holding-page #header .header {padding-block: calc(var(--spacing) / 2);}
+    .holding-page .holding-ticker {padding-block: 0;}
+    .holding-page .holding-ticker h5 {line-height: 37.5px;}
+    .portfolio-carousel__card {width: 65vw;}
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .twenty-years, .holding-ticker__track {animation: none;}
+}

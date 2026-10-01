@@ -1,0 +1,62 @@
+[
+    {
+        "slug": "project-1",
+        "thumbnail": "./assets/media/gifs/buttons.gif",
+        "title": "Title",
+        "client": "Client",
+        "year": "Year",
+        "video": "./assets/media/reel.mp4",
+        "description": "Short description",
+        "serviceCredits": "Music Supervision / Sync Licensing"
+    },
+    {
+        "slug": "project-2",
+        "thumbnail": "./assets/media/gifs/dials.gif",
+        "title": "Title",
+        "client": "Client",
+        "year": "Year",
+        "video": "./assets/media/reel.mp4",
+        "description": "Short description",
+        "serviceCredits": "Music Supervision / Sync Licensing"
+    },
+    {
+        "slug": "project-3",
+        "thumbnail": "./assets/media/gifs/keyboard.gif",
+        "title": "Title",
+        "client": "Client",
+        "year": "Year",
+        "video": "./assets/media/reel.mp4",
+        "description": "Short description",
+        "serviceCredits": "Music Supervision / Sync Licensing"
+    },
+    {
+        "slug": "project-4",
+        "thumbnail": "./assets/media/gifs/pan.gif",
+        "title": "Title",
+        "client": "Client",
+        "year": "Year",
+        "video": "./assets/media/reel.mp4",
+        "description": "Short description",
+        "serviceCredits": "Music Supervision / Sync Licensing"
+    },
+    {
+        "slug": "project-5",
+        "thumbnail": "./assets/media/gifs/paper.gif",
+        "title": "Title",
+        "client": "Client",
+        "year": "Year",
+        "video": "./assets/media/reel.mp4",
+        "description": "Short description",
+        "serviceCredits": "Music Supervision / Sync Licensing"
+    },
+    {
+        "slug": "project-6",
+        "thumbnail": "./assets/media/gifs/recording.gif",
+        "title": "Title",
+        "client": "Client",
+        "year": "Year",
+        "video": "./assets/media/reel.mp4",
+        "description": "Short description",
+        "serviceCredits": "Music Supervision / Sync Licensing"
+    }
+]
